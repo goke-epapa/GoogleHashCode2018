@@ -9,7 +9,7 @@ public class Simulator {
             World world = new World();
             world.parse(in+ ".in");
             world.simulate();
-            world.print2(in+".out");
+            world.print(in+".out");
         }
     }
 }

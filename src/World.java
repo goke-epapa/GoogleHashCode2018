@@ -107,7 +107,7 @@ public class World {
 
     }
 
-    void print2(String filename) {
+    void print(String filename) {
         PrintWriter writer = null;
         try {
             writer = new PrintWriter(filename, "UTF-8");
@@ -129,49 +129,6 @@ public class World {
             e.printStackTrace();
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-        }
-    }
-
-    void print(String filename) {
-        FileWriter fileWriter = null;
-        BufferedWriter bufferedWriter = null;
-        try {
-            fileWriter = new FileWriter(filename);
-            bufferedWriter = new BufferedWriter(fileWriter);
-
-            for (int j = 0; j < fleet.size(); j++) {
-                Vehicle vehicle = fleet.get(j);
-                if (!vehicle.completedRides.isEmpty()) {
-                    bufferedWriter.write(vehicle.id + " ");
-
-                    for (int i = 0; i < vehicle.completedRides.size() - 1; i++) {
-                        bufferedWriter.write(vehicle.completedRides.get(i).id + " ");
-                    }
-                    bufferedWriter.write(vehicle.completedRides.get(vehicle.completedRides.size() - 1).id);
-
-                    if (j != fleet.size() - 1) {
-                        bufferedWriter.write("\n");
-                    }
-                }
-
-
-            }
-            fileWriter.flush();
-        } catch (IOException e) {
-
-        } finally {
-
-            try {
-
-                if (bufferedWriter != null) {
-                    bufferedWriter.close();
-                }
-                if (fileWriter != null) {
-                    fileWriter.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 
